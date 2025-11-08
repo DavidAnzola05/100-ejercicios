@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página 12 DAAC</title>
+</head>
+<body>
+<script>
+const temaGuardadoDAAC = localStorage.getItem('temaDAAC') || 'light';
+document.documentElement.setAttribute('data-theme', temaGuardadoDAAC);
+
+const toggleBtnDAAC = document.getElementById('theme-toggleDAAC');
+
+function actualizarBotonDAAC() {
+  const temaActualDAAC = document.documentElement.getAttribute('data-theme');
+  toggleBtnDAAC.textContent = temaActualDAAC === 'dark' ? 'Modo Claro' : 'Modo Oscuro';
+}
+
+toggleBtnDAAC.addEventListener('click', () => {
+  const nuevoDAAC = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+  document.documentElement.setAttribute('data-theme', nuevoDAAC);
+  localStorage.setItem('temaDAAC', nuevoDAAC);
+  actualizarBotonDAAC();
+});
+
+actualizarBotonDAAC();
+</script>
+</body>
+</html>

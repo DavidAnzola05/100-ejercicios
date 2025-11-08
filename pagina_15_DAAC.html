@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página 15 DAAC</title>
+</head>
+<body>
+<script>
+    function eliminarDuplicados1DAAC(arrayDAAC) { return [...new Set(arrayDAAC)]; }
+function eliminarDuplicados2DAAC(arrayDAAC) { return Array.from(new Set(arrayDAAC)); }
+function eliminarDuplicadosObjetosDAAC(arrayDAAC, propiedadDAAC) {
+  const vistosDAAC = new Set();
+  return arrayDAAC.filter(itemDAAC => {
+    const valorDAAC = itemDAAC[propiedadDAAC];
+    if (vistosDAAC.has(valorDAAC)) return false;
+    vistosDAAC.add(valorDAAC);
+    return true;
+  });
+}
+
+// ejemplos
+console.log(eliminarDuplicados1DAAC([1,2,2,3]));
+
+</script>
+</body>
+</html>

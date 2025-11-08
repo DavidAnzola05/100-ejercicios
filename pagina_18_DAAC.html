@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página 18 DAAC</title>
+</head>
+<body>
+<script>
+    function esperarDAAC(msDAAC) {
+  return new Promise((resolveDAAC, rejectDAAC) => {
+    if (msDAAC < 0) return rejectDAAC(new Error('El tiempo no puede ser negativo'));
+    setTimeout(()=> resolveDAAC(`Esperé ${msDAAC}ms`), msDAAC);
+  });
+}
+
+esperarDAAC(500).then(r => { console.log(r); return esperarDAAC(300); }).then(r => console.log(r)).catch(e=>console.error(e));
+
+function obtenerUsuarioDAAC(idDAAC) {
+  return new Promise((resolveDAAC, rejectDAAC) => {
+    setTimeout(()=> {
+      const usuariosDAAC = {1:{id:1,nombre:'Ana'},2:{id:2,nombre:'Carlos'}};
+      if (usuariosDAAC[idDAAC]) resolveDAAC(usuariosDAAC[idDAAC]);
+      else rejectDAAC(new Error(`Usuario ${idDAAC} no encontrado`));
+    }, 500);
+  });
+}
+
+</script>
+</body>
+</html>

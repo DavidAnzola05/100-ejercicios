@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página 14 DAAC</title>
+</head>
+<body>
+<script>
+function contarPalabrasDAAC(texto) {
+  const textoLimpioDAAC = texto.toLowerCase().replace(/[^\w\sáéíóúñü]/g, '').trim();
+  const palabrasDAAC = textoLimpioDAAC.split(/\s+/).filter(p => p.length > 0);
+  const frecuenciasDAAC = new Map();
+  palabrasDAAC.forEach(p => frecuenciasDAAC.set(p, (frecuenciasDAAC.get(p) || 0) + 1));
+  return Array.from(frecuenciasDAAC.entries()).sort((a,b)=>b[1]-a[1]).map(([palabra, frecuencia]) => ({
+    palabra, frecuencia, porcentaje: ((frecuencia/palabrasDAAC.length)*100).toFixed(1)
+  }));
+}
+
+document.getElementById('analizarDAAC').onclick = () => {
+  const textoDAAC = document.getElementById('texto-analizarDAAC').value;
+  const resultadosDAAC = contarPalabrasDAAC(textoDAAC);
+  document.getElementById('resultadosDAAC').textContent = JSON.stringify(resultadosDAAC, null, 2);
+};
+</script>
+</body>
+</html>

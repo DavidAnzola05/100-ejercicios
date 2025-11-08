@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página 9 DAAC</title>
+</head>
+<body>
+<script>
+async function copiarTextoDAAC(texto, boton) {
+  try {
+    await navigator.clipboard.writeText(texto);
+    const textoOriginalDAAC = boton.textContent;
+    boton.textContent = '¡Copiado!';
+    boton.disabled = true;
+    setTimeout(() => { boton.textContent = textoOriginalDAAC; boton.disabled = false; }, 2000);
+  } catch (error) {
+    boton.textContent = 'Error al copiar';
+    setTimeout(() => { boton.textContent = 'Copiar'; }, 2000);
+  }
+}
+
+document.getElementById('copiar-btnDAAC').onclick = (event) => {
+  const textoACopiarDAAC = document.getElementById('texto-fuenteDAAC').value;
+  copiarTextoDAAC(textoACopiarDAAC, event.target);
+};
+</script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página 1 DAAC</title>
+</head>
+<body>
+<script>
+const $DAAC = sel => document.querySelector(sel);
+
+const inputDAAC = $DAAC('#nombreDAAC');
+const outDAAC = $DAAC('#outDAAC');
+
+$DAAC('#btnDAAC').addEventListener('click', () => {
+  const nombreDAAC = inputDAAC.value.trim();
+  outDAAC.textContent = nombreDAAC ? `Hola, ${nombreDAAC}!` : 'Escribe tu nombre';
+});
+</script>
+</body>
+</html>

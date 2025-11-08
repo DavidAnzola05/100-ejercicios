@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página 3 DAAC</title>
+</head>
+<body>
+<script>
+let nDAAC = 0;
+const cDAAC = document.getElementById('countDAAC');
+const paintDAAC = () => (cDAAC.textContent = nDAAC);
+
+document.getElementById('masDAAC').onclick = () => { nDAAC++; paintDAAC(); };
+document.getElementById('menosDAAC').onclick = () => { nDAAC--; paintDAAC(); };
+document.getElementById('resetDAAC').onclick = () => { nDAAC = 0; paintDAAC(); };
+</script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página 13 DAAC</title>
+</head>
+<body>
+<script>
+    async function cargarDatosDefaultDAAC() {
+  return new Promise(resolve => setTimeout(() => resolve({ idDAAC:'default', nombreDAAC:'Demo' }), 100));
+}
+
+async function obtenerDatosConFallbackDAAC(userIdDAAC) {
+  let datosDAAC = null;
+  try {
+    const respDAAC = await fetch(`/api/usuarios/${userIdDAAC}`);
+    if (!respDAAC.ok) throw new Error('API principal falló');
+    datosDAAC = await respDAAC.json();
+    return datosDAAC;
+  } catch (errDAAC) {
+    console.warn('API principal falló:', errDAAC.message);
+  }
+
+  try {
+    datosDAAC = JSON.parse(localStorage.getItem(`usuario-${userIdDAAC}`));
+    if (datosDAAC) return datosDAAC;
+  } catch (errDAAC) {
+    console.warn('Cache local falló:', errDAAC.message);
+  }
+
+  try {
+    datosDAAC = await cargarDatosDefaultDAAC();
+    return datosDAAC;
+  } catch (errDAAC) {
+    console.error('Todos los fallbacks fallaron:', errDAAC.message);
+  }
+
+  return { idDAAC: userIdDAAC, nombreDAAC: 'Usuario Desconocido', emailDAAC: 'no-disponible@ejemplo.com' };
+}
+
+</script>
+</body>
+</html>

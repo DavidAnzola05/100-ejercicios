@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página 7 DAAC</title>
+</head>
+<body>
+<script>
+let timerIntervalDAAC = null;
+let tiempoRestanteDAAC = 0;
+const displayDAAC = document.getElementById('timer-displayDAAC');
+
+function actualizarDisplayDAAC() {
+  const minutosDAAC = Math.floor(tiempoRestanteDAAC / 60);
+  const segundosDAAC = tiempoRestanteDAAC % 60;
+  displayDAAC.textContent = `${String(minutosDAAC).padStart(2,'0')}:${String(segundosDAAC).padStart(2,'0')}`;
+}
+
+document.getElementById('iniciarDAAC').onclick = () => {
+  if (timerIntervalDAAC) clearInterval(timerIntervalDAAC);
+  tiempoRestanteDAAC = parseInt(document.getElementById('tiempo-inicialDAAC').value) || 60;
+  actualizarDisplayDAAC();
+  timerIntervalDAAC = setInterval(() => {
+    if (tiempoRestanteDAAC <= 0) {
+      clearInterval(timerIntervalDAAC);
+      timerIntervalDAAC = null;
+      alert('¡Tiempo terminado!');
+      return;
+    }
+    tiempoRestanteDAAC--;
+    actualizarDisplayDAAC();
+  }, 1000);
+};
+
+document.getElementById('detenerDAAC').onclick = () => {
+  if (timerIntervalDAAC) { clearInterval(timerIntervalDAAC); timerIntervalDAAC = null; }
+};
+</script>
+</body>
+</html>

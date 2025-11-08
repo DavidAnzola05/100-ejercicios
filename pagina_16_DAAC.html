@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página 16 DAAC</title>
+</head>
+<body>
+<script>
+    const numerosDAAC = [64,34,25,12,22,11,90];
+const numerosAscendenteDAAC = numerosDAAC.toSorted ? numerosDAAC.toSorted((a,b)=>a-b) : [...numerosDAAC].sort((a,b)=>a-b);
+const numerosDescendenteDAAC = [...numerosDAAC].sort((a,b)=>b-a);
+console.log('OriginalDAAC', numerosDAAC);
+console.log('AscDAAC', numerosAscendenteDAAC);
+console.log('DescDAAC', numerosDescendenteDAAC);
+
+</script>
+</body>
+</html>

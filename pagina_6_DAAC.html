@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página 6 DAAC</title>
+</head>
+<body>
+<script>
+const frutasDAAC = ['Manzana','Plátano','Naranja','Uva','Fresa','Kiwi','Mango'];
+const inputBusquedaDAAC = document.getElementById('busquedaDAAC');
+const listaContainerDAAC = document.getElementById('listaDAAC');
+
+function mostrarFrutasDAAC(frutasFiltradas) {
+  listaContainerDAAC.innerHTML = frutasFiltradas.map(fruta => `<li>${fruta}</li>`).join('');
+}
+
+inputBusquedaDAAC.addEventListener('input', () => {
+  const terminoDAAC = inputBusquedaDAAC.value.toLowerCase();
+  const frutasFiltradasDAAC = frutasDAAC.filter(fruta => fruta.toLowerCase().includes(terminoDAAC));
+  mostrarFrutasDAAC(frutasFiltradasDAAC);
+});
+
+mostrarFrutasDAAC(frutasDAAC);
+</script>
+</body>
+</html>

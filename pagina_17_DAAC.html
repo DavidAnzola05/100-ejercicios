@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página 17 DAAC</title>
+</head>
+<body>
+<script>
+    const numsDAAC = [1,2,3,4,5];
+const sumaDAAC = numsDAAC.reduce((acc,cur)=>acc+cur,0);
+
+const frutasDAAC = ['manzana','banana','manzana','naranja','banana','manzana'];
+const conteoDAAC = frutasDAAC.reduce((cnt, f) => { cnt[f] = (cnt[f]||0)+1; return cnt; }, {});
+
+const frasesDAAC = ['hola mundo','javascript es genial','programar es divertido'];
+const palabrasDAAC = frasesDAAC.flatMap(f => f.split(' '));
+
+console.log({sumaDAAC, conteoDAAC, palabrasDAAC});
+
+</script>
+</body>
+</html>

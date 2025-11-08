@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página 4 DAAC</title>
+</head>
+<body>
+<script>
+document.getElementById('fmtDAAC').onclick = () => {
+  const valorDAAC = Number(document.getElementById('precioDAAC').value) || 0;
+  const monedaDAAC = document.getElementById('monedaDAAC').value;
+  const nfDAAC = new Intl.NumberFormat('es-ES', { style: 'currency', currency: monedaDAAC });
+  document.getElementById('out4DAAC').textContent = nfDAAC.format(valorDAAC);
+};
+</script>
+</body>
+</html>

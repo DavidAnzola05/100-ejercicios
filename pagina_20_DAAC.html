@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página 20 DAAC</title>
+</head>
+<body>
+<script>
+    async function obtenerUsuariosDAAC() {
+  try {
+    const responseDAAC = await fetch('https://jsonplaceholder.typicode.com/users');
+    if (!responseDAAC.ok) throw new Error(`HTTP error! status: ${responseDAAC.status}`);
+    const usuariosDAAC = await responseDAAC.json();
+    console.log('Usuarios obtenidos DAAC:', usuariosDAAC);
+    return usuariosDAAC;
+  } catch (errorDAAC) {
+    console.error('Error al obtener usuarios DAAC:', errorDAAC);
+    throw errorDAAC;
+  }
+}
+
+async function crearUsuarioDAAC(datosUsuarioDAAC) {
+  try {
+    const responseDAAC = await fetch('https://jsonplaceholder.typicode.com/users', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(datosUsuarioDAAC)
+    });
+    if (!responseDAAC.ok) throw new Error(`Error ${responseDAAC.status}: ${responseDAAC.statusText}`);
+    return await responseDAAC.json();
+  } catch (errorDAAC) {
+    console.error('Error crear usuario DAAC:', errorDAAC);
+    throw errorDAAC;
+  }
+}
+
+</script>
+</body>
+</html>

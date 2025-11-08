@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página 2 DAAC</title>
+</head>
+<body>
+<script>
+const aDAAC = document.getElementById('aDAAC');
+const bDAAC = document.getElementById('bDAAC');
+const resDAAC = document.getElementById('resDAAC');
+
+document.getElementById('sumarDAAC').onclick = () => {
+  const xDAAC = Number(aDAAC.value);
+  const yDAAC = Number(bDAAC.value);
+  if (Number.isNaN(xDAAC) || Number.isNaN(yDAAC)) {
+    resDAAC.textContent = 'Ingresa números válidos';
+    return;
+  }
+  resDAAC.textContent = `${xDAAC} + ${yDAAC} = ${xDAAC + yDAAC}`;
+};
+</script>
+</body>
+</html>
